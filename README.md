@@ -5,7 +5,7 @@ The objective of this repository is to solve a Frontend challenge from TrackTik 
 ## Scripts
 
 Install dependencies
-### `yarn install` =>
+### `yarn install`
 
 Run project
 ### `yarn start`
