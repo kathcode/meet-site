@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Avatar from './Avatar';
+import Avatar from './index';
 
 test('should render the label sended in the props', () => {
   render(<Avatar label="label" />);
