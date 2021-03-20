@@ -29,11 +29,11 @@ const CardList = ({
         </Icon>
       </Link>
     }
-    <Avatar label="C" width="50" height="50" />
+    <Avatar label="C" width={50} height={50} />
     <Content>
       <div><Title titleColor={titleColor}>{title}</Title></div>
-      <label>{subtitle}</label>
-      <div>{description}</div>
+      <div><small>{subtitle}</small></div>
+      <div><small>{description}</small></div>
     </Content>
     {arrowPosition === 'right' &&
       <Link to={pathUrl}>
