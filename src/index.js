@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 
 import Header from './shared/components/Header';
-import List from './views/List';
+import ContainerList from './containers/List';
 import Detail from './views/Detail';
 
 const detailMockData = {
@@ -24,12 +24,12 @@ ReactDOM.render(
     <Router>
       <Header />
       <Switch>
+        <Route exact path="/">
+          <ContainerList />
+        </Route>
         <Router exact path="/detail/:id">
           <Detail siteData={detailMockData} />
         </Router>
-        <Route exact path="/">
-          <List />
-        </Route>
       </Switch>
     </Router>
   </React.StrictMode>,

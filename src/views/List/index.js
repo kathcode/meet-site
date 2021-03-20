@@ -1,17 +1,19 @@
 import React from 'react';
+import PropType from 'prop-types';
 
 import ContextBar from '../../shared/components/ContextBar';
 import SearchBar from '../../shared/components/SearchBar';
-import CardList from '../../shared/components/CardList';
 
-const List = () => (
+const List = ({ children }) => (
   <>
     <ContextBar title="Sites" />
     <SearchBar />
-    <CardList title="Title" subtitle="Subtitle" description="Description" />
-    <CardList title="Title" subtitle="Subtitle" description="Description" />
-    <CardList title="Title" subtitle="Subtitle" description="Description" />
+    {children}
   </>
 );
+
+List.propTypes = {
+  children: PropType.node
+}
 
 export default List;
