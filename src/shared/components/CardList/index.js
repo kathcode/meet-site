@@ -1,52 +1,46 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropType from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // Material UI
-import IconButton from '@material-ui/core/IconButton';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import Avatar from '../Avatar';
+import Icon from '../Icon';
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid gray;
-  padding: 10px;
-`;
+// Styles
+import { Container, Content, Title } from './cardList.styled';
 
-const Content = styled.div`
-  flex-grow: 1;
-  padding-left: 15px;
-`;
-
-const Arrow = styled.div`
-  position: absolute;
-  right: -5px;
-`;
-
-const CardList = ({ title, subtitle, description, arrowRight, arrowLeft }) => (
-  <Container>
-    {arrowLeft &&
-      <Arrow>
-        <IconButton edge="start" color="inherit" aria-label="menu" >
-          <ArrowForwardIosIcon style={{ fontSize: 20 }} />
-        </IconButton>
-      </Arrow>
+const CardList = ({
+  title,
+  subtitle,
+  description,
+  arrowPosition,
+  bgColor,
+  titleColor,
+  pathUrl
+}) => (
+  <Container bgColor={bgColor}>
+    {arrowPosition === 'left' &&
+      <Link to={pathUrl}>
+        <Icon>
+          <ArrowBackIosIcon style={{ color: titleColor, fontSize: 20 }} />
+        </Icon>
+      </Link>
     }
     <Avatar label="C" width="50" height="50" />
     <Content>
-      <div><strong>{title}</strong></div>
+      <div><Title titleColor={titleColor}>{title}</Title></div>
       <label>{subtitle}</label>
       <div>{description}</div>
     </Content>
-    {arrowRight &&
-      <Arrow>
-        <IconButton edge="start" color="inherit" aria-label="menu" >
-          <ArrowForwardIosIcon style={{ fontSize: 20 }} />
-        </IconButton>
-      </Arrow>
+    {arrowPosition === 'right' &&
+      <Link to={pathUrl}>
+        <Icon>
+          <ArrowForwardIosIcon style={{ color: titleColor, fontSize: 20 }} />
+        </Icon>
+      </Link>
     }
   </Container>
 );
@@ -55,16 +49,20 @@ CardList.propTypes = {
   title: PropType.string,
   subtitle: PropType.string,
   description: PropType.string,
-  arrowRight: PropType.bool,
-  arrowLeft: PropType.bool,
+  arrowPosition: PropType.oneOf(['left', 'right']),
+  bgColor: PropType.string,
+  titleColor: PropType.string,
+  pathUrl: PropType.string
 }
 
 CardList.defaultProps = {
   title: 'Title',
   subtitle: 'Label',
   description: 'Description',
-  arrowRight: true,
-  arrowLeft: false,
+  arrowPosition: 'right',
+  bgColor: '#FFFFFF',
+  titleColor: '#333333',
+  pathUrl: '/'
 }
 
 export default CardList;
