@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 // Services
 import { SiteService } from '../../services/sites';
-import CardList from '../../shared/components/CardList';
 
 import List from '../../views/List';
 
@@ -12,27 +11,21 @@ const ContainerList = () => {
 
   useEffect(() => {
     getSites();
-  }, [])
+  }, []);
 
-  const getSites = async () => {
-    const response = await SiteService.getSites();
+  const getSites = async (current) => {
+    const response = await SiteService.getSites(current, 6);
 
     setSites(response);
     setIsLoading(false);
   }
 
+  const nextPage = (page) => {
+    getSites(page);
+  }
+
   return (
-    <List>
-      {isLoading && <div>Loading</div>}
-      {!isLoading && sites.map(site => {
-        const { id, title, address } = site;
-        return <CardList
-          key={id}
-          title={title}
-          subtitle={address.city}
-        />
-      })}
-    </List>
+    <List isLoading={isLoading} sites={sites} onNextPage={nextPage} />
   )
 }
 

@@ -2,8 +2,8 @@ const BASE_PATH = 'http://localhost:3000';
 
 
 export const SiteService = {
-  getSites: async () => {
-    const URL = `${BASE_PATH}/sites`;
+  getSites: async (page = 1, limit = 6) => {
+    const URL = `${BASE_PATH}/sites?_page=${page}&_limit=${limit}`;
   
     try {
       const response = await fetch(URL);
