@@ -9,15 +9,6 @@ import Header from './shared/components/Header';
 import ContainerList from './containers/List';
 import Detail from './views/Detail';
 
-const detailMockData = {
-  imageUrl: 'https://images.newindianexpress.com/uploads/user/imagelibrary/2020/4/23/w1200X800/animal-cat-face-close-up-feline-416160.jpg',
-  altImgAttribute: 'cats',
-  hostName: 'Kath',
-  hostTitle: 'Software developer',
-  phoneNumber: '12345',
-  email: 'some@some.com',
-  address: 'calle'
-}
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,9 +18,9 @@ ReactDOM.render(
         <Route exact path="/">
           <ContainerList />
         </Route>
-        <Router exact path="/detail/:id">
-          <Detail siteData={detailMockData} />
-        </Router>
+        <Route path="/detail/:id">
+          <Detail />
+        </Route>
       </Switch>
     </Router>
   </React.StrictMode>,

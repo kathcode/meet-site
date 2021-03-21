@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import _ from "lodash";
 
 // Services
 import { SiteService } from '../../services/sites';
@@ -24,8 +25,22 @@ const ContainerList = () => {
     getSites(page);
   }
 
+  const search = async (term) => {
+    const response = await SiteService.search(term);
+
+    setSites(response);
+    setIsLoading(false);
+  }
+
+
   return (
-    <List isLoading={isLoading} sites={sites} onNextPage={nextPage} />
+    <List
+      isLoading={isLoading}
+      sites={sites}
+      onNextPage={nextPage}
+      onSearch={_.debounce(search, 2000)}
+      onClear={getSites}
+    />
   )
 }
 

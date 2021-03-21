@@ -7,17 +7,17 @@ import DetailHeader from './components/DetailHeader';
 import DetailContent from './components/DetailContent';
 
 const Detail = () => {
-  let { slug } = useParams();
+  let { id } = useParams();
   const [site, setSite] = useState({});  
 
   useEffect(() => {
     getSiteData();
-  }, [])
+  }, []);
 
   const getSiteData = async () => {
-    const response = await SiteService.getSite(slug);
+    const response = await SiteService.getSite(id);
     setSite(response);
-  }
+  };
 
   return (
     <>

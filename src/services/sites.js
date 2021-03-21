@@ -24,5 +24,17 @@ export const SiteService = {
     } catch (error) {
       throw Error(error);
     }
+  },
+
+  search: async (term) => {
+    const URL = `${BASE_PATH}/sites/?title=${term}`;
+  
+    try {
+      const response = await fetch(URL);
+      const sites = await response.json();
+      return sites;
+    } catch (error) {
+      throw Error(error);
+    }
   }
 }

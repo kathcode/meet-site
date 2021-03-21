@@ -7,14 +7,14 @@ import CardList from '../../shared/components/CardList';
 
 import { PaginationC } from './styled';
 
-const List = ({ isLoading, sites, onNextPage }) => {
+const List = ({ isLoading, sites, onNextPage, onSearch, onClear }) => {
   const options = [
     { value: 0, text: 'All sites' }
   ];
 
   return <>
     <ContextBar title="Sites" />
-    <SearchBar options={options} />
+    <SearchBar options={options} onSearch={onSearch} onClear={onClear} />
     {isLoading && <div>Loading</div>}
       {!isLoading && sites.map(site => {
         const { id, title, address, images } = site;
@@ -23,12 +23,12 @@ const List = ({ isLoading, sites, onNextPage }) => {
           title={title}
           subtitle={address.city}
           imageUrl={images[0]}
-          pathUrl={`/blog/${id}`}
+          pathUrl={`/detail/${id}`}
         />
       })}
       {!isLoading &&
         <PaginationC
-          count={340} color="primary"
+          count={283} color="primary"
           boundaryCount={1}
           onChange={((ev, page) => onNextPage(page))}
         />
@@ -45,11 +45,15 @@ List.propTypes = {
     address: PropTypes.object,
     images: PropTypes.array
   })).isRequired,
-  onNextPage: PropTypes.func
+  onNextPage: PropTypes.func,
+  onSearch: PropTypes.func,
+  onClear: PropTypes.func
 }
 
 List.defaultProps = {
-  onNextPage: () => {}
+  onNextPage: () => {},
+  onSearch: () => {},
+  onClear: () => {}
 }
 
 export default List;
