@@ -19,7 +19,9 @@ const CardList = ({
   arrowPosition,
   bgColor,
   titleColor,
-  pathUrl
+  pathUrl,
+  imageUrl,
+  label
 }) => (
   <Container bgColor={bgColor}>
     {arrowPosition === 'left' &&
@@ -29,7 +31,7 @@ const CardList = ({
         </Icon>
       </Link>
     }
-    <Avatar label="C" width={50} height={50} />
+    <Avatar imageUrl={imageUrl} label={label} width={50} height={50} />
     <Content>
       <div><Title titleColor={titleColor}>{title}</Title></div>
       <div><small>{subtitle}</small></div>
@@ -52,7 +54,9 @@ CardList.propTypes = {
   arrowPosition: PropType.oneOf(['left', 'right']),
   bgColor: PropType.string,
   titleColor: PropType.string,
-  pathUrl: PropType.string
+  pathUrl: PropType.string,
+  imageUrl: PropType.string,
+  label: PropType.string
 }
 
 CardList.defaultProps = {
@@ -62,7 +66,9 @@ CardList.defaultProps = {
   arrowPosition: 'right',
   bgColor: '#FFFFFF',
   titleColor: '#333333',
-  pathUrl: '/'
+  pathUrl: '/',
+  imageUrl: '',
+  label: ''
 }
 
 export default CardList;
