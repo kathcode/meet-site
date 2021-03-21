@@ -9,7 +9,7 @@ const Container = styled.div`
   border-top: 1px solid black;
 `;
 
-const DetailHeader = ({ title, subtitle, description }) => (
+const DetailHeader = ({ title, subtitle, description, label }) => (
   <Container>
     <CardList
       title={title}
@@ -19,6 +19,7 @@ const DetailHeader = ({ title, subtitle, description }) => (
       arrowPosition="left"
       bgColor="#153e90"
       pathUrl=""
+      label={label}
     />
   </Container>
 );
@@ -29,6 +30,7 @@ DetailHeader.propTypes = {
   description: PropType.string,
   arrowRight: PropType.bool,
   arrowLeft: PropType.bool,
+  label: PropType.string
 }
 
 DetailHeader.defaultProps = {
@@ -37,6 +39,7 @@ DetailHeader.defaultProps = {
   description: 'Description',
   arrowRight: true,
   arrowLeft: false,
+  label: ''
 }
 
 export default DetailHeader;
