@@ -12,5 +12,17 @@ export const SiteService = {
     } catch (error) {
       throw Error(error);
     }
+  },
+
+  getSite: async (id) => {
+    const URL = `${BASE_PATH}/sites/${id}`;
+  
+    try {
+      const response = await fetch(URL);
+      const sites = await response.json();
+      return sites;
+    } catch (error) {
+      throw Error(error);
+    }
   }
 }
