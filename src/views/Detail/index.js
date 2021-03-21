@@ -1,28 +1,47 @@
-import React from 'react';
-import PropType from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { SiteService } from '../../services/sites';
 
 import DetailHeader from './components/DetailHeader';
 import DetailContent from './components/DetailContent';
 
-const Detail = ({ siteData }) => (
-  <>
-    <DetailHeader title="Sites" />
-    <DetailContent
-      siteData={siteData}
-    />
-  </>
-);
+const Detail = () => {
+  let { slug } = useParams();
+  const [site, setSite] = useState({});  
 
-Detail.propTypes = {
-  siteData: PropType.shape({
-    imageUrl: PropType.string,
-    altImgAttribute: PropType.string,
-    hostName: PropType.string,
-    hostTitle: PropType.string,
-    phoneNumber: PropType.string,
-    email: PropType.string,
-    address: PropType.string
-  }).isRequired
-}
+  useEffect(() => {
+    getSiteData();
+  }, [])
+
+  const getSiteData = async () => {
+    const response = await SiteService.getSite(slug);
+    setSite(response);
+  }
+
+  return (
+    <>
+      {Object.keys(site).length &&
+        <>
+          <DetailHeader
+            title={site.title}
+            subtitle={site.address.street}
+            description={site.contacts.main.firstName}
+            label={site.title && site.title.charAt(0)}
+          />
+          <DetailContent
+            imageUrl={site.images[0]}
+            altImgAttribute={site.title}
+            hostName={site.contacts.main.firstName}
+            hostTitle={site.contacts.main.jobTitle}
+            phoneNumber={site.contacts.main.phoneNumber}
+            email={site.contacts.main.email}
+            address={site.contacts.main.address.country}
+          />
+        </>
+      }
+    </>
+  )
+};
 
 export default Detail;
