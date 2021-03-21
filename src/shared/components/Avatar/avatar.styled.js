@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: ${props => props.width}px;
   height: ${props => props.height}px;
-  background: ${ props => props.color };
+  background: ${ props => props.imageUrl? 'transparent' : props.color };
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +18,7 @@ export const Label = styled.label`
 `;
 
 export const Image = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 `;

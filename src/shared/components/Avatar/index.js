@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Container, Label, Image } from './avatar.styled';
 
 const Avatar = ({ imageUrl, label, alt, color, width, height }) => (
-  <Container color={color} width={width} height={height}>
+  <Container color={color} width={width} height={height} imageUrl={imageUrl}>
     {imageUrl && <Image src={imageUrl} alt={alt} />}
     {!imageUrl && <Label>{label}</Label>}
   </Container>
