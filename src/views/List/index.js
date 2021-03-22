@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import ContextBar from '../../shared/components/ContextBar';
 import SearchBar from '../../shared/components/SearchBar';
 import CardList from '../../shared/components/CardList';
 
-import { PaginationC } from './styled';
+import { PaginationC, ProgressBarContainer } from './styled';
 
 const List = ({ isLoading, sites, onNextPage, onSearch, onClear }) => {
   const options = [
@@ -15,7 +17,7 @@ const List = ({ isLoading, sites, onNextPage, onSearch, onClear }) => {
   return <>
     <ContextBar title="Sites" />
     <SearchBar options={options} onSearch={onSearch} onClear={onClear} />
-    {isLoading && <div>Loading</div>}
+    {isLoading && <ProgressBarContainer><CircularProgress /></ProgressBarContainer>}
       {!isLoading && sites.map(site => {
         const { id, title, address, images } = site;
         return <CardList

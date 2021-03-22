@@ -7,3 +7,8 @@ export const PaginationC = styled(Pagination)`
   justify-content: center;
   padding: 10px 0px;
 `;
+
+export const ProgressBarContainer = styled.div`
+  text-align: center;
+  padding: 20px;
+`;
