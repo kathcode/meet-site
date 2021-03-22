@@ -12,3 +12,7 @@ Run project
 
 Run test cases
 ### `npm test`
+
+## Application in Heroku
+
+To see the application deployed go [here](https://tracktik.herokuapp.com/).
