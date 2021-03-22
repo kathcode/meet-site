@@ -5,10 +5,10 @@ The objective of this repository is to solve a Frontend challenge from TrackTik 
 ## Scripts
 
 Install dependencies
-### `yarn install`
+### `npm install`
 
 Run project
-### `yarn start`
+### `npm start`
 
 Run test cases
-### `yarn test`
+### `npm test`
