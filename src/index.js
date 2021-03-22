@@ -7,7 +7,7 @@ import './index.css';
 
 import Header from './shared/components/Header';
 import ContainerList from './containers/List';
-import Detail from './views/Detail';
+import ContainerDetail from './containers/Detail';
 
 
 ReactDOM.render(
@@ -19,7 +19,7 @@ ReactDOM.render(
           <ContainerList />
         </Route>
         <Route path="/detail/:id">
-          <Detail />
+          <ContainerDetail />
         </Route>
       </Switch>
     </Router>

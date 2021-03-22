@@ -16,6 +16,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid gray;
+  padding-left: 5px;
 `;
 
 const SearchBar = ({ options, onSearch, onClear }) => {
@@ -31,6 +32,7 @@ const SearchBar = ({ options, onSearch, onClear }) => {
       <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
+        defaultValue={0}
       >
         {options.map(option => (
           <MenuItem key={option.value} value={option.value}>
