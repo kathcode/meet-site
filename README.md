@@ -1,6 +1,6 @@
 # Frontend Challenge 👋
 
-This is a web application where you can see a list of the sites and a detail of them.
+This is a web application where you can see a list of sites and a detail of them.
 
 ## Scripts
 
