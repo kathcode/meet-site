@@ -1,4 +1,4 @@
-# TrackTik Frontend Challenge 👋
+# Frontend Challenge 👋
 
 The objective of this repository is to solve a Frontend challenge from TrackTik company.
 
