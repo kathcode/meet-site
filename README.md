@@ -1,6 +1,6 @@
 # Frontend Challenge 👋
 
-The objective of this repository is to solve a Frontend challenge from TrackTik company.
+This is a web application where you can see a list of the sites and a detail of them.
 
 ## Scripts
 
